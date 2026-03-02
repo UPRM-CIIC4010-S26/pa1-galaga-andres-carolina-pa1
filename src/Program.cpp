@@ -35,7 +35,7 @@ void Program::Update() {
     pauseFrames = std::max(pauseFrames - 1, 0);
 
     if (!startup && !paused && !gameOver && pauseFrames <= 0) {
-        Enemy::ManageEnemies(player->hitBox);
+        Enemy::ManageEnemies(player->hitBox,score);
         StdEnemy::attackReset();
         ManageEnemyRespawns();
         player->update();
@@ -84,6 +84,8 @@ void Program::Draw() {
 
     for (Projectile p : Projectile::projectiles) p.draw();
     for (std::pair<std::pair<float, float>, Enemy*>& p : Enemy::enemies) if (p.second) p.second->draw();
+
+    DrawText(TextFormat("Score: %d" , score ), 20, 10, 24, WHITE);
 
     if (startup) DrawStartup();
     if (paused) DrawPauseScreen();
@@ -155,7 +157,7 @@ void Program::KeyInputs() {
     if ((!gameOver && !startup && IsKeyPressed('P')) || (paused && IsKeyPressed(KEY_ENTER))) paused = !paused;
     if (!paused && !startup && IsKeyPressed('O')) gameOver = !gameOver;
     if (!gameOver && !paused && IsKeyPressed('I')) startup = !startup;
-    if (IsKeyPressed('H')) HitBox::drawHitbox = !HitBox::drawHitbox;
+    if (IsKeyPressed('H')) HitBox::drawHitbox = !HitBox::drawHitbox;  
     
     if (gameOver && IsKeyPressed(KEY_ENTER)) {
         gameOver = false;
@@ -191,6 +193,7 @@ void Program::Reset() {
     count = 0;
     delay = 0;
     lives = 3;
+    score = 0;
     Enemy::enemies.push_back(std::pair<std::pair<float, float>, Enemy*> {
             std::pair<float, float>{350, 150}, 
             new SpEnemy(350, 150)

@@ -37,6 +37,7 @@ void SpEnemy::update(std::pair<float, float> pos, HitBox target) {
         this->hitBox.box.y = pos.second;
         this->cooldown--; 
         this->specialCooldown--;
+        this-> enemy_value =30;
     } else if (spawning) {
         float xFact = (pos.first - this->position.first) / Math::getDistance(this->position, pos);
         float yFact = (pos.second - this->position.second) / Math::getDistance(this->position, pos);

@@ -12,7 +12,7 @@ Don't forget that you must also fill out an evaluation form in Moodle to conside
 ## Grading
 
 (802-23-9765) (Andres J Ramos) (andres.ramos13@upr.edu)
-(STUDENT NUMBER HERE) (STUDENT NAME HERE) (STUDENT EMAIL HERE)
+(841-23-0852) (Carolina I. Rivera) (carolina.rivera22@upr.edu)
 
 Any project that doesn't compile will receive a 0.
 

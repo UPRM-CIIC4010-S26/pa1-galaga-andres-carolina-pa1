@@ -62,6 +62,7 @@ void StdEnemy::update(std::pair<float, float> pos, HitBox target) {
         this->hitBox.box.y = pos.second;
         this->cooldown--; 
         this->specialCooldown = attackInProgress ? specialCooldown + 1 : specialCooldown - 1;
+        this-> enemy_value;
     } else if (spawning) {
         float xFact = (pos.first - this->position.first) / Math::getDistance(this->position, pos);
         float yFact = (pos.second - this->position.second) / Math::getDistance(this->position, pos);

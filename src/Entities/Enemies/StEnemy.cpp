@@ -14,6 +14,7 @@ void StEnemy::update(std::pair<float, float> pos, HitBox target) {
         this->hitBox.box.x = pos.first;
         this->hitBox.box.y = pos.second;
         this->cooldown--; 
+        this->enemy_value;
     } else {
         float xFact = (pos.first - this->position.first) / Math::getDistance(this->position, pos);
         float yFact = (pos.second - this->position.second) / Math::getDistance(this->position, pos);
