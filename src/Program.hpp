@@ -19,7 +19,9 @@ class Program {
         int delay = 0;
         int lives = 3;
         int pauseFrames = 0;
-        int score;
+        int score = 0;
+        int lifegainPoint = 1000;
+        int  maxlifes = 5;
 
         bool startup = true;
         bool paused = false;

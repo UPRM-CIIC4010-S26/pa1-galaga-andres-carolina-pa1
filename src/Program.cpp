@@ -35,7 +35,7 @@ void Program::Update() {
     pauseFrames = std::max(pauseFrames - 1, 0);
 
     if (!startup && !paused && !gameOver && pauseFrames <= 0) {
-        Enemy::ManageEnemies(player->hitBox,score);
+        Enemy::ManageEnemies(player->hitBox, score, lifegainPoint, lives);
         StdEnemy::attackReset();
         ManageEnemyRespawns();
         player->update();
@@ -97,7 +97,7 @@ void Program::ManageEnemyRespawns() {
 
     respawnCooldown -= 1;
     if (respawnCooldown <= 0) {
-        respawnCooldown = 1080;
+        respawnCooldown = 280;
         for (std::pair<std::pair<float, float>, Enemy*>& p : Enemy::enemies) {
             if (!p.second && p.first.second != 150) {
                 int eType = GetRandomValue(1, 3);
@@ -119,8 +119,8 @@ void Program::ManageEnemyRespawns() {
         }
     }
 
-    if(respawns >= 4) {
-        count = 4;
+    if(respawns >= 5) {
+        count = 5;
         respawns = 0;
     }
 
@@ -131,7 +131,7 @@ void Program::ManageEnemyRespawns() {
         });
 
         count--;
-        delay = 20;
+        delay = 15;
     }
 }
 
@@ -212,5 +212,5 @@ void Program::Reset() {
             std::pair<float, float>{x, y}, 
             new StdEnemy(x, y)
         });
-    }
+    }  
 }

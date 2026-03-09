@@ -45,7 +45,7 @@ class Enemy {
              }
         }
         
-        static void ManageEnemies(HitBox target, int& score ) {
+        static void ManageEnemies(HitBox target, int& score, int& lifegainPoint, int& lives ) {
             for (std::pair<std::pair<float, float>, Enemy*>& p : Enemy::enemies) {
                 p.first.first += (p.first.first == 0) ? 0 : direction;
                 if (p.second) {
@@ -61,6 +61,11 @@ class Enemy {
                     if (p.second->health <= 0) {
 
                         score += p.second ->enemy_value;
+                        if(score >= lifegainPoint && lives < 5){
+                            lives ++;
+                            lifegainPoint += 1000;
+                        }
+
                         Animation::animations.push_back(
                             Animation(p.second->position.first, p.second->position.second, 155, 0, 33, 33, 30, 30, 4, ImageManager::SpriteSheet)
                         );
